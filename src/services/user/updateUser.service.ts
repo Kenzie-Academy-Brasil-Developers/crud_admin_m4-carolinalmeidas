@@ -5,6 +5,7 @@ import {
 import { QueryConfig, QueryResult } from "pg";
 import { client } from "../../database";
 import format from "pg-format";
+import { responseUserSchema } from "../../schemas/users.schemas";
 
 const updateUserService = async (
   userId: number,
@@ -30,6 +31,7 @@ const updateUserService = async (
     queryConfig
   );
 
-  return queryResult.rows[0];
+  const user = responseUserSchema.parse(queryResult.rows[0])
+  return user;
 };
 export default updateUserService;

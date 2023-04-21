@@ -14,14 +14,13 @@ const requestUserSchema = userSchema.omit({
 });
 
 const responseUserSchema = userSchema.omit({
-  password: true
-})
+  password: true,
+});
 
-
-const updateUserSchema= userSchema.partial().omit({
+const updateUserSchema = userSchema.partial().omit({
   id: true,
   active: true,
-  admin: true
-})
+  admin: true,
+});
 
 export { userSchema, requestUserSchema, responseUserSchema, updateUserSchema };

@@ -1,7 +1,9 @@
 import { QueryConfig, QueryResult } from "pg";
 import { client } from "../../database";
+import { responseUserSchema } from "../../schemas/users.schemas";
+import { TUserResponse } from "../../interfaces/users.interfaces";
 
-const activeUserService = async (id: number): Promise<Response> => {
+const activeUserService = async (id: number): Promise<TUserResponse> => {
   const queryString: string = `
     UPDATE 
         users 
@@ -17,8 +19,8 @@ const activeUserService = async (id: number): Promise<Response> => {
     values: [id],
   };
   const queryResult: QueryResult = await client.query(queryConfig);
-
-  return queryResult.rows[0];
+  const user = responseUserSchema.parse(queryResult.rows[0])
+  return user;
 };
 
 export default activeUserService;

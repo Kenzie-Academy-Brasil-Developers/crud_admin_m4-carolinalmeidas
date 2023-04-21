@@ -27,7 +27,7 @@ const handleErrors = (
 
   if (err instanceof ZodError) {
     const errorObj = err.errors.reduce((obj: obj, err) => {
-      const key: string = err.path.join('.');
+      const key: string = err.path.join(".");
       obj[key] = err.message;
       return obj;
     }, {});

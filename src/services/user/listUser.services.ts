@@ -4,12 +4,14 @@ import "dotenv/config"
 import { TUserResponse } from "../../interfaces/users.interfaces";
 import { client } from "../../database";
 
-
 const listUserService = async (): Promise<Array<TUserResponse>> => {
  
   const queryString: string = `
         SELECT
-            *
+            "name",
+            "email",
+            "admin",
+            "active"
         FROM
             users;
     `;

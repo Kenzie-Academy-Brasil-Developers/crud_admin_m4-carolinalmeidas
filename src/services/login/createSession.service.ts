@@ -8,7 +8,7 @@ import { client } from "../../database";
 import { AppError } from "../../error";
 import * as bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import "dotenv/config"
+import "dotenv/config";
 const createSessionService = async (
   userData: TLoginRequest
 ): Promise<TLoginResponse> => {
@@ -51,9 +51,7 @@ const createSessionService = async (
     }
   );
 
-  
-
   return { token };
 };
 
-export default createSessionService
+export default createSessionService;
